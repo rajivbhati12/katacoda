@@ -1,23 +1,23 @@
 import os
 import requests 
-#from hamcrest import *
+import env as ENV
 
-@given('I have {test_api} url')
-def step_impl(context,test_api):
-    context.test_api_url=os.environ.get(test_api.upper() + '_URL')
+
+@given('I have Hello World url')
+def step_impl(context):
+    context.test_api_url=ENV.HELLO_WORLD_URL
 
 
 @when('I call a get request')
 def step_impl(context):
-    print(">>>>>>" + context.test_api_url)
     context.response = requests.get(url = context.test_api_url)
+	
 
-
-@then('I should get \'Hello World\' in response')
-def step_impl(context):
-    raise NotImplementedError(u'STEP: Then I should get \'Hello World\' in response')
+@then('I should get \'{message}\' in response')
+def step_impl(context, message):
+    assert message in context.response.text 
 
 
 @then('the response status is 200')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Then the response status is 200')
+    assert int(context.response.status_code) == 200    
