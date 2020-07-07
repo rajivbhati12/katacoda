@@ -1,6 +1,7 @@
-mport os
+import os
 from os.path import join, dirname
 from dotenv import load_dotenv
 
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
+#print(os.environ.get("HELLO_WORLD_URL"))
