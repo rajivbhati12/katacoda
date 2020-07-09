@@ -1,4 +1,4 @@
-# katacoda
+# katacoda - BDD
 
 Welcome to the katacoda!
 
